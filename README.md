@@ -1,21 +1,81 @@
-🏋️ GymSense ML — Workout Recommendation EngineGymSense ML is a lightweight machine learning pipeline that classifies the optimal workout type based on member biometrics. It trains a model in Python using scikit-learn and exports it as a zero-dependency JSON file, allowing you to run inference in Flutter/Dart without TFLite, ONNX, or any heavy ML libraries.📌 Project OverviewThis repository bridges the gap between Python data science and mobile development by converting complex tree ensembles into a simple nested JSON structure that Dart can parse natively.StepDescriptionEDAVisualizes class balance, gender distribution, and BMI-by-workout-type.PreprocessingHandles Label Encoding, StandardScaler normalization, and stratified 80/20 splitting.TrainingBenchmarks Random Forest, Gradient Boosting, and Decision Trees to select the winner.EvaluationGenerates classification reports, confusion matrices, and feature importance charts.ExportSerializes the winning model into a self-contained gym_model.json.FlutterProvides a ready-to-use Dart class for instant mobile integration.🗂️ Repository StructureBashgymsense-ml/
-├── gym_model_sklearn_EN.ipynb   # Main Jupyter Notebook
+🏋️ GymSense ML — Workout Recommendation Engine
+GymSense ML is a lightweight machine learning pipeline that classifies the optimal workout type based on member biometrics. It trains a model in Python using scikit-learn and exports it as a zero-dependency JSON file, allowing you to run inference in Flutter/Dart without TFLite, ONNX, or any heavy ML libraries.
+
+📌 Project Overview
+This repository bridges the gap between Python data science and mobile development by converting complex tree ensembles into a simple nested JSON structure that Dart can parse natively.
+
+Step	Description
+EDA	Visualizes class balance, gender distribution, and BMI-by-workout-type.
+Preprocessing	Handles Label Encoding, StandardScaler normalization, and stratified 80/20 splitting.
+Training	Benchmarks Random Forest, Gradient Boosting, and Decision Trees to select the winner.
+Evaluation	Generates classification reports, confusion matrices, and feature importance charts.
+Export	Serializes the winning model into a self-contained gym_model.json.
+Flutter	Provides a ready-to-use Dart class for instant mobile integration.
+🗂️ Repository Structure
+gymsense-ml/
+├── gym_model_sklearn_EN.ipynb # Main Jupyter Notebook
 ├── assets/
-│   └── gym_model.json           # Final Model (Copy this to Flutter)
-├── outputs/                     # Visualizations & Python Pickles
-│   ├── gym_model.pkl            # Pickle format (Python use)
-│   ├── scaler.pkl               # Scaler parameters
-│   ├── confusion_matrix.png     # Model performance chart
-│   └── feature_importance.png   # Key biometric drivers
-├── requirements.txt             # Python dependencies
-└── README.md                    # Project documentation
-📊 Dataset SpecificationsThe engine is trained on gym_members_exercise_tracking.csv (approx. 973 rows).Features: Age, Gender, Weight (kg), Height (m), BMI, Experience Level (1-3).Target Classes: Cardio, HIIT, Strength, Yoga.⚡ Quick Start1. Clone & InstallBashgit clone https://github.com/Rozera-xalil/gymsense-ml.git
+│ └── gym_model.json # Final Model (Copy this to Flutter)
+├── outputs/ # Visualizations & Python Pickles
+│ ├── gym_model.pkl # Pickle format (Python use)
+│ ├── scaler.pkl # Scaler parameters
+│ ├── confusion_matrix.png # Model performance chart
+│ └── feature_importance.png # Key biometric drivers
+├── requirements.txt # Python dependencies
+└── README.md # Project documentation
+
+text
+
+
+## 📊 Dataset Specifications
+
+The engine is trained on gym_members_exercise_tracking.csv (approx. 973 rows).
+
+**Features:**
+- Age
+- Gender
+- Weight (kg)
+- Height (m)
+- BMI
+- Experience Level (1-3)
+
+**Target Classes:**
+- Cardio
+- HIIT
+- Strength
+- Yoga
+
+## ⚡ Quick Start
+
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/Rozera-xalil/gymsense-ml.git
 cd gymsense-ml
 pip install -r requirements.txt
-2. Train the ModelRun the Jupyter notebook gym_model_sklearn_EN.ipynb. The script will automatically:Process the data.Select the best performing model (highest accuracy).Generate the gym_model.json in the /assets folder.📱 Flutter IntegrationThe exported JSON model can be executed in Dart with a single helper class.1. Add the AssetCopy assets/gym_model.json to your Flutter project and register it in pubspec.yaml:YAMLflutter:
+2. Train the Model
+Run the Jupyter notebook gym_model_sklearn_EN.ipynb. The script will automatically:
+
+Process the data.
+Select the best performing model (highest accuracy).
+Generate the gym_model.json in the /assets folder.
+📱 Flutter Integration
+The exported JSON model can be executed in Dart with a single helper class.
+
+1. Add the Asset
+Copy assets/gym_model.json to your Flutter project and register it in pubspec.yaml:
+
+yaml
+
+flutter:
   assets:
     - assets/gym_model.json
-2. The Predictor ClassCreate lib/workout_predictor.dart and paste the following logic:Dartimport 'dart:convert';
+2. The Predictor Class
+Create lib/workout_predictor.dart and paste the following logic:
+
+dart
+
+import 'dart:convert';
 import 'package:flutter/services.dart';
 
 class WorkoutPredictor {
@@ -66,4 +126,14 @@ class WorkoutPredictor {
     };
   }
 }
-📦 RequirementsPython 3.8+scikit-learn >= 1.3pandas, numpy, matplotlib, seaborn👨‍💻 About the AuthorROZÊRA-XELÎL Full Stack Developer & AI Engineering Student“Building intelligent solutions with minimal footprint.”
+📦 Requirements
+Python 3.8+
+scikit-learn >= 1.3
+pandas
+numpy
+matplotlib
+seaborn
+👨‍💻 About the Author
+ROZÊRA-XELÎL
+Full Stack Developer & AI Engineering Student
+"Building intelligent solutions with minimal footprint."
