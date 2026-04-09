@@ -231,14 +231,6 @@ jupyter
 
 ## 👨‍💻 About the Author
 
-
-
-<div align="center">
-
-
-
-## 👨‍💻 About the Author
-
 <div align="center">
 
 # ROZÊRA-XELÎL full_stack dev &&& AI_eng Student
